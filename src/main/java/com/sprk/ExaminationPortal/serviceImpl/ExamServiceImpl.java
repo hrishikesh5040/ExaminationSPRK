@@ -16,7 +16,6 @@ import com.sprk.ExaminationPortal.dto.response.QResponse;
 import com.sprk.ExaminationPortal.dto.response.UserQuesResponse;
 import com.sprk.ExaminationPortal.repository.UserQuesRepository;
 import com.sprk.ExaminationPortal.repository.UserRepository;
-import com.sprk.ExaminationPortal.service.JwtUtils;
 import jakarta.annotation.PostConstruct;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
@@ -44,21 +43,19 @@ public class ExamServiceImpl implements ExamService {
 
     private final UserQuesRepository userQuesRepository;
 
-    private final JwtUtils jwtUtils;
-
     @Autowired
     public ExamServiceImpl(
             QuesRepository quesRepository,
             UserRepository userRepository,
             JavaMailSender javaMailSender,
-            UserQuesRepository userQuesRepository,
-            JwtUtils jwtUtils
+            UserQuesRepository userQuesRepository
+           
     ){
             this.quesRepository = quesRepository;
             this.userRepository = userRepository;
             this.javaMailSender = javaMailSender;
             this.userQuesRepository = userQuesRepository;
-            this.jwtUtils = jwtUtils;
+            
     }
 
     @Value("${spring.mail.username}")
